@@ -98,6 +98,25 @@ document.getElementById('email').onblur = function() { //когда фокус �
       invalidMain.innerHTML += 'email';
       email.classList.add('invalidInput')
       invalidCheckEmail1.innerHTML = '* Необходимо заполнить поле в формате xxx@xxx.xxx'
+    }else if(document.getElementById('email').value.replace(/\s/g, '').length > 128) {
+        email.classList.add('invalidInput')
+        invalidCheckEmail2.innerHTML = ' * Размер поля ограничен 128 символами.'
+    }
+    if(document.getElementById('name').value.match(/[№";.,:`±!@#$%^&*()_+<>?\/\{}[\]]+|[0-9]+/gm)) {
+        invalidMain.innerHTML += ' имя';
+        name.classList.add('invalidInput')
+        invalidCheckName1.innerHTML = '* Поле заполнено некорректно. Нельзя использовать спецсимволы'
+    }else if(document.getElementById('name').value.replace(/\s/g, '').length > 128) { 
+        name.classList.add('invalidInput')
+        invalidCheckName2.innerHTML = ' * Размер поля ограничен 128 символами.'
+    }
+    if(document.getElementById('lastname').value.match(/[№";.,:`±!@#$%^&*()_+<>?\/\{}[\]]+|[0-9]+/gm)) {
+        invalidMain.innerHTML += ' фамилия';
+        lastname.classList.add('invalidInput')
+        invalidCheckLastname1.innerHTML = '* Поле заполнено некорректно. Нельзя использовать спецсимволы'
+    }else if(document.getElementById('lastname').value.replace(/\s/g, '').length > 128) { 
+        lastname.classList.add('invalidInput')
+        invalidCheckLastname2.innerHTML = ' * Размер поля ограничен 128 символами.'
     }
     if((document.getElementById('password').value.length <= 8) || (!document.getElementById('password').value.match(/\W+/g)) || (!document.getElementById('password').value.match(/[0-9]+/g)) ){
       invalidMain.innerHTML += ' пароль'
